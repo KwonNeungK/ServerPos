@@ -3,5 +3,6 @@
 	<classpathentry kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="D:/7월_자바웹개발취업반/MyLib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="D:/7월_자바웹개발취업반/MyLib/jlayer-1.0.1.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>

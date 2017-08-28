@@ -20,6 +20,7 @@ public class JoinMember extends JDialog{
 	private JTextField nameText = new JTextField();
 	private JLabel  contactLabel= new JLabel("연락처");
 	private JTextField contactText = new JTextField();
+	private JLabel  blank = new JLabel("");
 	private JButton btnJoin = new JButton("가입");
 	private JPanel panelJoin = new JPanel(new GridLayout(3, 2));
 	
@@ -28,6 +29,7 @@ public class JoinMember extends JDialog{
 		this.panelJoin.add(nameText);
 		this.panelJoin.add(contactLabel);
 		this.panelJoin.add(contactText);
+		this.panelJoin.add(blank);
 		this.panelJoin.add(btnJoin);
 		this.add(panelJoin);
 	}
@@ -56,7 +58,7 @@ public class JoinMember extends JDialog{
 	}
 	public JoinMember(PointDialog parent) {
 		this.parent = parent;
-		this.setSize(500,500);
+		this.setSize(300,150);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(parent);
 		this.compInit();

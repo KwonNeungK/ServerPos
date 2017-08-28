@@ -20,27 +20,28 @@ public class UsePoint extends JDialog{
 	
 	private JLabel  contactLabel= new JLabel("연락처");
 	private JTextField contactText = new JTextField();
-	private JLabel  nameLabel= new JLabel("이름");
-	private JLabel  pointLabel= new JLabel("포인트");
+	private JLabel  nameLabel= new JLabel("\uC870\uD68C\uB41C \uC774\uB984");
+	private JTextField nameText = new JTextField();
+	private JLabel  pointLabel= new JLabel("\uC870\uD68C\uB41C \uD3EC\uC778\uD2B8");
+	private JTextField savedPoint = new JTextField();
 	private JLabel willSpend = new JLabel("사용하실 포인트 : ");
 	private JTextField pointText = new JTextField();
 	private JButton btnInquiry = new JButton("조회");
 	private JButton btnUse = new JButton("사용");
 	private JPanel panelUse = new JPanel(new GridLayout(4, 2));
-	private JPanel usePoint = new JPanel(new GridLayout(2, 1));
 	private int returnpoint;
 	public int pointPrice;
 	public void compInit(){
 		this.panelUse.add(contactLabel);
 		this.panelUse.add(contactText);
 		this.panelUse.add(nameLabel);
+		
 		this.panelUse.add(pointLabel);
-		this.usePoint.add(willSpend);
-		this.usePoint.add(pointText);
-		this.panelUse.add(usePoint);
+		panelUse.add(willSpend);
+		panelUse.add(pointText);
 		this.panelUse.add(btnInquiry);
 		this.panelUse.add(btnUse);
-		this.add(panelUse);
+		getContentPane().add(panelUse);
 	}
 
 	public void eventInit(){
@@ -96,7 +97,7 @@ public class UsePoint extends JDialog{
 	}
 	public UsePoint(PointDialog parent) {
 		this.parent = parent;
-		this.setSize(500,500);
+		this.setSize(300,150);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(parent);
 		this.compInit();

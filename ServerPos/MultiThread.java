@@ -16,6 +16,11 @@ import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+import javazoom.jl.player.Player;
+import javazoom.jl.player.advanced.AdvancedPlayer;
+import javazoom.jl.player.advanced.PlaybackEvent;
+import javazoom.jl.player.advanced.PlaybackListener;
+
 public class MultiThread extends Thread{
 	
 	private Server ser;
@@ -41,7 +46,10 @@ public class MultiThread extends Thread{
 
 			InputStream is = sock.getInputStream(); // 데이터 받기 (스트림개방)
 			DataInputStream dis = new DataInputStream(is); // 데이터 받기 스트림 업그레이드
-
+			
+			FileInputStream fis = new FileInputStream("doorbell.mp3");
+			Player player = new Player(fis);
+		
 			while(true){
 				msg = dis.readUTF();
 				if(msg.equals("orders")) {
@@ -59,11 +67,24 @@ public class MultiThread extends Thread{
 						ser.arrlist(table, t);
 					}else{
 						ser.arrlist(table, (ArrayList<Order>)input.readObject());
+						new Thread() {
+					        public void run() {
+					            try {
+					                while(true) {
+					                    player.play();
+					                    System.out.println("음악 나옴");
+					                }
+					            }
+					            catch (Exception e) {System.out.println(e); }
+					        }
+					    }.start();						
+						
 					}
 				}
 				else if(msg.equals("alert")) {
 					table = dis.readUTF();
 					JOptionPane.showMessageDialog(ser, table+"번 테이블 호출");
+					player.play();
 				}
 				else 
 					System.out.println(msg); // (읽기) 출력
